@@ -1,0 +1,32 @@
+nav {
+    background-color: #f5ba13;
+    overflow: auto; /*not hiding content, can also be set to hidden */
+    padding: 5px; 
+    margin: auto;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .navbar-title {
+    float: left; /* Align to the left */
+    color: #fff;
+    font-family: "McLaren", cursive;
+    font-weight: 200;
+    margin: 15px 10px; /* margin top & bottom = 15, L & R = 10*/
+  }
+  
+  .nav-link {
+    float: inline-end;
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    padding: 20px 18px;
+    text-decoration: none;
+    
+  }
+  
+  .nav-link:hover {
+    /* background-color: #e6ddd3; */
+    color: black;
+  }
