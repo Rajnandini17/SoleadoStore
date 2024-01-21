@@ -14,7 +14,7 @@ const Header = () => {
   <Link className="nav-link" to="/register">Signup</Link>
   <Link className="nav-link" to="/category">Category</Link>
   <Link className="nav-link" to="/">Home</Link>
-  {/* <Link className="nav-link"  to="*"></Link className="nav-link" > */}
+  {/* <Link className="nav-link" to="*"> PageNotFound</Link> */}
 </nav>
     </>
   );

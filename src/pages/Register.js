@@ -45,14 +45,16 @@ const Register = () => {
 
 
   return (
-    <div>
     <div className='form-container'>
+    <div className='header'>
     {/* <h1>New Registration</h1> */}
 
     <form onSubmit={handleOnSubmit}>
-    <h1>Sign up</h1>
+    <h1>New here?</h1>
+    <h4>Sign up</h4>
 
-    <div class="form-group">
+<div className='input-fields'>
+    <div class="input">
     <img className='img-icon' src={user_icon} alt='' />
     {/* <label for="inputName">Name</label> */}
     <input 
@@ -67,7 +69,7 @@ const Register = () => {
     
     </div>
 
-<div class="form-group">
+<div class="input">
     <img className='img-icon' src={email_icon} alt='' />
     {/* <label for="inputEmail">Email</label> */}
     <input 
@@ -81,7 +83,7 @@ const Register = () => {
     />
     </div>
 
-<div class="form-group">
+<div class="input">
     <img className='img-icon' src={password_icon} alt='' />
     {/* <label for="inputPassword">Password</label> */}
     <input 
@@ -95,7 +97,7 @@ const Register = () => {
     />
     </div>
 
-  <div class="form-group">
+  <div class="input">
     <img className='img-icon' src={phone_icon} alt='' />
     {/* <label for="inputPhone">Phone</label> */}
     <input 
@@ -110,7 +112,7 @@ const Register = () => {
     {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
   </div>
 
-  <div class="form-group">
+  <div class="input">
   <img className='img-icon' src={location_icon} alt='' />
     {/* <label for="inputAddress">Address</label> */}
     <input 
@@ -124,7 +126,9 @@ const Register = () => {
     />
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+  <button type="submit" class="btn btn-primary">Login</button>
+  </div>
 </form>
     </div>
     </div>
