@@ -54,7 +54,7 @@ const Register = () => {
     <h4>Sign up</h4>
 
 <div className='input-fields'>
-    <div class="input">
+    <div className="input">
     <img className='img-icon' src={user_icon} alt='' />
     {/* <label for="inputName">Name</label> */}
     <input 
@@ -69,7 +69,7 @@ const Register = () => {
     
     </div>
 
-<div class="input">
+<div className="input">
     <img className='img-icon' src={email_icon} alt='' />
     {/* <label for="inputEmail">Email</label> */}
     <input 
@@ -83,7 +83,7 @@ const Register = () => {
     />
     </div>
 
-<div class="input">
+<div className="input">
     <img className='img-icon' src={password_icon} alt='' />
     {/* <label for="inputPassword">Password</label> */}
     <input 
@@ -97,7 +97,7 @@ const Register = () => {
     />
     </div>
 
-  <div class="input">
+  <div className="input">
     <img className='img-icon' src={phone_icon} alt='' />
     {/* <label for="inputPhone">Phone</label> */}
     <input 
@@ -112,7 +112,7 @@ const Register = () => {
     {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
   </div>
 
-  <div class="input">
+  <div className="input">
   <img className='img-icon' src={location_icon} alt='' />
     {/* <label for="inputAddress">Address</label> */}
     <input 
@@ -125,9 +125,10 @@ const Register = () => {
     required
     />
   </div>
-
+   <div className='button-class'>
   <button type="submit" class="btn btn-primary">Sign Up</button>
   <button type="submit" class="btn btn-primary">Login</button>
+  </div>
   </div>
 </form>
     </div>

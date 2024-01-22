@@ -68,7 +68,7 @@
 
   .button-class{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
   
   .form-container form button:hover {

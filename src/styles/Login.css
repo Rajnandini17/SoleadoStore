@@ -57,7 +57,7 @@
     }
     
     
-    .form-container form button {
+    /* .form-container form button {
       border: 1px solid black;
       border-radius: 12px;
       background-color: #000;
@@ -65,7 +65,7 @@
       width: 150px;
       margin: 12px;
     }
-    
+     */
     .form-container form button:hover {
       border: 1px solid black;
       background: #000000; /* fallback for old browsers */
