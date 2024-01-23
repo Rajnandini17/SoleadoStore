@@ -15,6 +15,8 @@ import Register from './pages/Register';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/Login';
+import Dashboard from './pages/user/Dashboard';
+import PrivateRoute from './components/Layout/Routes/Private';
 
 
 
@@ -28,6 +30,9 @@ function App() {
     <Layout />
     <Routes>
       <Route exact path = '/' element={<HomePage />}/>
+      <Route exact path='/dashboard' element={<PrivateRoute/>}>
+        <Route path='' element={<Dashboard />} />
+      </Route>
       <Route exact path = '/about' element={<About />}/>
       <Route exact path = '/contact' element={<Contact />}/>
       <Route exact path = '/policy' element={<Policy />}/>
