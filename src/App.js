@@ -17,6 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/Login';
 import Dashboard from './pages/user/Dashboard';
 import PrivateRoute from './components/Layout/Routes/Private';
+import ForgotPassword from './pages/ForgotPassword';
 
 
 
@@ -38,6 +39,7 @@ function App() {
       <Route exact path = '/policy' element={<Policy />}/>
       <Route exact path = '*' element={<PageNotFound/>}/>
       <Route exact path = '/register' element={<Register/>}/>
+      <Route exact path = '/forgot-password' element={<ForgotPassword/>}/>
       <Route exact path = '/login' element={<Login/>}/>
       </Routes>
     <Footer />

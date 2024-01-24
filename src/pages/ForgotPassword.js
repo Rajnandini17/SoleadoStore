@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
-import '../styles/Login.css';
+import '../styles/ForgotPassword.css';
 import email_icon from '../images/mail.png';
+import question_icon from '../images/question.png';
 import password_icon from '../images/padlock.png';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import { useAuth } from '../context/auth';
+// import { useAuth } from '../context/auth';
 
 const Login = () => {
 
     
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [auth, setAuth] = useAuth();
+    const [newPassword, setNewPassword] = useState("");
+    const [question, setQuestion] = useState("");
     const navigate = useNavigate();
 
     // const showToast = () => {
@@ -23,31 +24,20 @@ const Login = () => {
         event.preventDefault();
         try {
 
-            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/login`, 
-            {email, password}
-            );
+            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/forgot-password`, 
+            {email, newPassword, question,
+            });
             if(res && res.status===200 && res.data.success){
                 // console.log(res.data);
-               toast.success(res.data.message);
-               setAuth({
-                ...auth,
-                user: res.data.user,
-                token: res.data.token,
-            });
-            localStorage.setItem('auth', JSON.stringify(res.data));
-            navigate('/');
+                navigate('/login');
             } else {
-                console.log(res.data.error);
-                toast.error(res.data.message || "Invalid Credentials");
+                toast.error(res.data.message);
             }
-            
         } catch (error) {
             console.log(error);
             toast.error("Something went wrong");
         }
-
     };
-
 
   return (
     <div className='form-container'>
@@ -55,8 +45,8 @@ const Login = () => {
     {/* <h1>New Registration</h1> */}
 
     <form onSubmit={handleOnSubmit}>
-    <h1>Welcome Back</h1>
-    <h4>Login</h4>
+    <h1>Forgot password?</h1>
+    <h4>Reset</h4>
 
 <div className='input-fields'>
 
@@ -74,22 +64,36 @@ const Login = () => {
     />
     </div>
 
+    <div class="input">
+    <img className='img-icon' src={question_icon} alt='' />
+    {/* <label for="inputEmail">Email</label> */}
+    <input 
+    type="text" 
+    value={question}
+    onChange={(event) => setQuestion(event.target.value)}
+    className="form-control" 
+    id="inputQuestion" 
+    placeholder="Enter your nickname"
+    required
+    />
+    </div>
+
 <div class="input">
     <img className='img-icon' src={password_icon} alt='' />
     {/* <label for="inputPassword">Password</label> */}
     <input 
     type="password" 
-    value={password}
-    onChange={(event) => setPassword(event.target.value)}
+    value={newPassword}
+    onChange={(event) => setNewPassword(event.target.value)}
     className="form-control" 
     id="inputPassword" 
-    placeholder="Enter your Password"
+    placeholder="Enter new Password"
     required
     />
     </div>
     <div className='button-class'>
-  <button type="submit" class="btn btn-primary">Login</button>
-  <button type="submit" class="btn btn-primary" onClick={() => {navigate('/forgot-password')}}>Forgot Password?</button>
+  <button type="submit" class="btn btn-primary">Reset</button>
+  
   </div>
   </div>
 </form>

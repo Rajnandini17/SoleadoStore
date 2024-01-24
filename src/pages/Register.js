@@ -5,6 +5,7 @@ import email_icon from '../images/mail.png';
 import password_icon from '../images/padlock.png';
 import phone_icon from '../images/phone.png';
 import location_icon from '../images/location.png';
+import question_icon from '../images/question.png';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
@@ -16,6 +17,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [question, setQuestion] = useState("");
     const navigate = useNavigate();
 
     // const showToast = () => {
@@ -27,7 +29,7 @@ const Register = () => {
         try {
 
             const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`, 
-            {name, email, password, phone, address}
+            {name, email, password, phone, address, question}
             );
             if(res.data.success){
                toast.success(res.data.message);
@@ -124,7 +126,23 @@ const Register = () => {
     placeholder="Enter Address"
     required
     />
+    </div>
+
+<div className="input">
+  <img className='img-icon' src={question_icon} alt='' />
+    {/* <label for="inputAddress">Address</label> */}
+    <input 
+    type="text" 
+    value={question}
+    onChange={(event) => setQuestion(event.target.value)}
+    className="form-control" 
+    id="inputQuestion" 
+    placeholder="Enter your nickname"
+    required
+    />
   </div>
+
+
    <div className='button-class'>
   <button type="submit" class="btn btn-primary">Sign Up</button>
   <button type="submit" class="btn btn-primary">Login</button>
