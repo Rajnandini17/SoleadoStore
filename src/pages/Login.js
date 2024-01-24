@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import { useAuth } from '../context/auth';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -50,18 +51,18 @@ const Login = () => {
 
 
   return (
-    <div className='form-container'>
-    <div className='header'>
+    <div className='form-container-login'>
+    <div className='header-login'>
     {/* <h1>New Registration</h1> */}
 
     <form onSubmit={handleOnSubmit}>
     <h1>Welcome Back</h1>
     <h4>Login</h4>
 
-<div className='input-fields'>
+<div className='input-fields-login'>
 
-<div class="input">
-    <img className='img-icon' src={email_icon} alt='' />
+<div class="input-login">
+    <img className='img-icon-login' src={email_icon} alt='' />
     {/* <label for="inputEmail">Email</label> */}
     <input 
     type="email" 
@@ -74,8 +75,8 @@ const Login = () => {
     />
     </div>
 
-<div class="input">
-    <img className='img-icon' src={password_icon} alt='' />
+<div class="input-login">
+    <img className='img-icon-login' src={password_icon} alt='' />
     {/* <label for="inputPassword">Password</label> */}
     <input 
     type="password" 
@@ -87,9 +88,10 @@ const Login = () => {
     required
     />
     </div>
-    <div className='button-class'>
+    <h6>Forgot Password? <Link to="/forgot-password">Reset here</Link></h6>
+    <div className='button-class-login'>
   <button type="submit" class="btn btn-primary">Login</button>
-  <button type="submit" class="btn btn-primary" onClick={() => {navigate('/forgot-password')}}>Forgot Password?</button>
+  {/* <button type="submit" class="btn btn-primary" onClick={() => {navigate('/forgot-password')}}>Forgot Password?</button> */}
   </div>
   </div>
 </form>

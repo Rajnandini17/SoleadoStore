@@ -1,4 +1,4 @@
-.form-container{
+.form-container-login{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     /* background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%); */
   }
   
-  .header{
+  .header-login{
     display: flex;
     flex-direction: column;
     width: 400px;
@@ -15,24 +15,24 @@
     align-items: center;
   }
   
-  .form-control{
+  .form-control-login{
     width: 300px;
     border: none;
   }
   
-  .img-icon{
+  .img-icon-login{
     margin: 0px 10px;
     height: 25px;
     width: 25px;
   }
   
-  .inputs{
+  .inputs-login{
     display: flex;
     flex-direction: column;
     
   }
   
-  .input {
+  .input-login{
     display: flex;
     align-items: center;
     margin: 15px;
@@ -42,37 +42,37 @@
     width: 350px;
   }
   
-  .form-container form h1{
+  .form-container-login form h1{
     text-align: center;
   }
   
-  .form-container form h4{
+  .form-container-login form h4{
     text-align: center;
   }
   
-  .form-container form {
+  .form-container-login form {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       padding: 30px;
       background-color: #fff;
     }
 
-  .button-class{
+  .button-class-login{
       display: flex;
       /* flex-direction: column; */
     }
     
     
     
-    /* .form-container form button {
+    .form-container-login form button {
       border: 1px solid black;
       border-radius: 12px;
       background-color: #000;
       color: white;
-      width: 150px;
+      width: 350px;
       margin: 12px;
     }
-     */
-    .form-container form button:hover {
+    
+    .form-container-login form button:hover {
       border: 1px solid black;
       background: #000000; /* fallback for old browsers */
        background: -webkit-linear-gradient(
@@ -87,6 +87,11 @@
      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
      } 
    
+
+     .form-container-login form h6{
+      text-align: left;
+      padding: 12px;
+    }
   
    
    

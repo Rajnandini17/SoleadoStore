@@ -9,6 +9,7 @@ import question_icon from '../images/question.png';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
 
@@ -145,8 +146,8 @@ const Register = () => {
 
    <div className='button-class'>
   <button type="submit" class="btn btn-primary">Sign Up</button>
-  <button type="submit" class="btn btn-primary">Login</button>
   </div>
+  <h6>Already a user? <Link to="/login">Login here</Link> </h6>
   </div>
 </form>
     </div>

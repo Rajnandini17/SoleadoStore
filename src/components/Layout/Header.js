@@ -30,6 +30,7 @@ const Header = () => {
     </>
   ) : (
     <>
+
   <Link className="nav-link" to="/" onClick={handleLogout}>Logout</Link>
     </>
   )}
