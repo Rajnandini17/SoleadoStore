@@ -3,7 +3,7 @@ import loading from '../Layout/loading.gif';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/Spinner.css';
 
-const Spinner = () => {
+const Spinner = ({path = "login"}) => {
     const [count, setCount] = useState(3);
     const navigate = useNavigate();
 
@@ -12,14 +12,14 @@ const Spinner = () => {
         setCount((prevValue) => {
           if (prevValue === 1) {
             clearInterval(interval);
-            navigate('/login');
+            navigate(`/${path}`);
           }
           return prevValue - 1;
         });
       }, 1000);
 
       return () => clearInterval(interval);
-    }, [navigate]);
+    }, [navigate, path]);
 
     return (
       <div className='text-center'>

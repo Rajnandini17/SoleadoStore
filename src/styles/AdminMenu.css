@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.sidebar{
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    height: 70vh;
+    width: 200px;
+    background-color: black;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    padding: 0px;
+    transition: all 0.5s ease;
+}
+
+.main-content{
+    left: 200px;
+    width: calc(100% - 250px);
+    position: relative;
+    min-height: 70vh;
+    top: 0;
+}
+
+.container h1{
+    padding: 200px 0px 0px 0px;
+    text-align: center;
+}
+
+/* .sidebar .top .logo{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    padding-top: 15px;
+} */
+
+
+.sidebar ul li {
+    /* position: relative; */
+    /* display: flex;
+    flex-direction: column; */
+    background-color: white;
+    list-style-type: none;
+    height: 55px;
+    width: 100%;
+    margin: 0px 0px 5px 0px;
+    line-height: 50px;
+    border: 0.5px solid black;
+    padding: 0px;
+}
+
+
+.sideNav-item{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.sideNav-Link{
+    color: black;
+    margin-left: 5px;
+    padding-left: 30px;
+    align-items: center;
+    text-decoration: none;
+   
+}
+
+.sideNav-Link:hover{
+    background-color: white;
+    color: rebeccapurple;
+}
+
+.img-icon-sideNav{
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 50px;
+    margin-right: 10px;
+}
+

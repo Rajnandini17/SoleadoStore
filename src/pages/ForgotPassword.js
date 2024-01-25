@@ -51,7 +51,7 @@ const Login = () => {
 <div className='input-fields'>
 
 <div class="input">
-    <img className='img-icon' src={email_icon} alt='' />
+    <img className='img-icon-fp' src={email_icon} alt='' />
     {/* <label for="inputEmail">Email</label> */}
     <input 
     type="email" 
@@ -65,7 +65,7 @@ const Login = () => {
     </div>
 
     <div class="input">
-    <img className='img-icon' src={question_icon} alt='' />
+    <img className='img-icon-fp' src={question_icon} alt='' />
     {/* <label for="inputEmail">Email</label> */}
     <input 
     type="text" 
@@ -79,7 +79,7 @@ const Login = () => {
     </div>
 
 <div class="input">
-    <img className='img-icon' src={password_icon} alt='' />
+    <img className='img-icon-fp' src={password_icon} alt='' />
     {/* <label for="inputPassword">Password</label> */}
     <input 
     type="password" 
