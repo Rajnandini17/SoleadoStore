@@ -1,10 +1,16 @@
 import React from 'react'
+import UserMenu from '../../components/Layout/UserMenu';
 
 
 const Dashboard = () => {
   return (
     <div>
-    <h1>Dashboard</h1>
+    <UserMenu />
+    <div className='main-content'>
+    <div className='container'>
+        <h1>Hello User!</h1>
+    </div>
+   </div>
     </div>
   )
 }

@@ -17,9 +17,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/Login';
 import Dashboard from './pages/user/Dashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import CreateCategory from './pages/admin/CreateCategory';
+import CreateProduct from './pages/admin/CreateProduct';
+import Users from './pages/admin/Users';
 import PrivateRoute from './components/Layout/Routes/Private';
 import AdminRoute from './components/Layout/Routes/AdminRoute';
 import ForgotPassword from './pages/ForgotPassword';
+import Orders from './pages/user/Orders';
+import Profile from './pages/user/Profile';
 
 
 
@@ -35,9 +40,14 @@ function App() {
       <Route exact path = '/' element={<HomePage />}/>
       <Route exact path='/dashboard' element={<PrivateRoute/>}>
         <Route path='user' element={<Dashboard />} />
+        <Route path='user/orders' element={<Orders/>} />
+        <Route path='user/profile' element={<Profile/>} />
       </Route>
       <Route exact path='/dashboard' element={<AdminRoute/>}>
         <Route path='admin' element={<AdminDashboard />} />
+        <Route path='admin/create-category' element={<CreateCategory />} />
+        <Route path='admin/create-product' element={<CreateProduct />} />
+        <Route path='admin/users' element={<Users />} />  
       </Route>
       <Route exact path = '/about' element={<About />}/>
       <Route exact path = '/contact' element={<Contact />}/>

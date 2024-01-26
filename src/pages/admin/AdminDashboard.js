@@ -4,7 +4,15 @@ import AdminMenu from '../../components/Layout/AdminMenu';
 
 const adminDashboard = () => {
   return (
-<AdminMenu/>
+    <div>
+      <AdminMenu/>
+      <div className='main-content'>
+    <div className='container'>
+        <h1>Hi admin!</h1>
+    </div>
+   </div>
+    </div>
+
   )
 }
 

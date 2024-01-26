@@ -1,11 +1,10 @@
 import React from 'react'
-import '../../styles/AdminMenu.css';
+import '../../styles/UserMenu.css';
 import {Link} from 'react-router-dom';
-import category_icon from '../../images/category.png';
 import product_icon from '../../images/product.png';
 import user_icon from '../../images/user.png';
 
-const AdminMenu = () => {
+const UserMenu = () => {
   return (
     <>
    <div className='sidebar'>
@@ -18,21 +17,15 @@ const AdminMenu = () => {
     
     <ul style={{padding: '0px'}}>
         <li>
-            <Link className='sideNav-Link' to="/dashboard/admin/create-category">
-            <img className='img-icon-sideNav' src={category_icon} alt='' />
-            <span className='sideNav-item'>Category</span>
-            </Link>
-        </li>
-        <li>
-            <Link className='sideNav-Link' to="/dashboard/admin/create-product">
-            <img className='img-icon-sideNav' src={product_icon} alt='' />
-            <span className='sideNav-item'>Products</span>
-            </Link>
-        </li>
-        <li>
-            <Link className='sideNav-Link' to="/dashboard/admin/users">
+            <Link className='sideNav-Link' to="/dashboard/user/profile">
             <img className='img-icon-sideNav' src={user_icon} alt='' />
-            <span className='sideNav-item'>Users</span>
+            <span className='sideNav-item'>Profile</span>
+            </Link>
+        </li>
+        <li>
+            <Link className='sideNav-Link' to="/dashboard/user/orders">
+            <img className='img-icon-sideNav' src={product_icon} alt='' />
+            <span className='sideNav-item'>Orders</span>
             </Link>
         </li>
     </ul>
@@ -49,4 +42,4 @@ const AdminMenu = () => {
   )
 }
 
-export default AdminMenu
+export default UserMenu
