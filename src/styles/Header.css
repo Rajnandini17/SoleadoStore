@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=McLaren&display=swap');
+
+
 nav {
     background-color: #f5ba13;
     overflow: auto; /*not hiding content, can also be set to hidden */
@@ -6,7 +9,7 @@ nav {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   }
   
-  .navbar-title {
+  .navbar-title-h1 {
     float: left; /* Align to the left */
     color: #fff;
     font-family: "McLaren", cursive;

@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <>
   <nav>
-  <div className="navbar-title">
+  <div className="navbar-title-h1">
         <h1>IntelliShop</h1>
       </div>
   <Link className="nav-link" to="/cart">Cart</Link>

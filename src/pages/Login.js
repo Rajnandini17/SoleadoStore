@@ -27,6 +27,10 @@ const Login = () => {
             const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/login`, 
             {email, password}
             );
+
+            console.log('Received Token:', res.data.token);
+
+
             if(res && res.status===200 && res.data.success){
                 // console.log(res.data);
                toast.success(res.data.message);

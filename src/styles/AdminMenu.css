@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }
 
 
@@ -30,14 +30,14 @@
 
 .main-content{
     left: 200px;
-    width: calc(100% - 250px);
+    width: calc(100% - 200px);
     position: relative;
     min-height: 70vh;
     top: 0;
 }
 
 .container h1{
-    padding: 200px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     text-align: center;
 }
 
