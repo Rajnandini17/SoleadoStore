@@ -20,12 +20,13 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import CreateCategory from './pages/admin/CreateCategory';
 import CreateProduct from './pages/admin/CreateProduct';
 import Users from './pages/admin/Users';
+import Products from './pages/admin/Products';
 import PrivateRoute from './components/Layout/Routes/Private';
 import AdminRoute from './components/Layout/Routes/AdminRoute';
 import ForgotPassword from './pages/ForgotPassword';
 import Orders from './pages/user/Orders';
 import Profile from './pages/user/Profile';
-
+import UpdateProduct from './pages/admin/UpdateProduct';
 
 
 
@@ -48,6 +49,8 @@ function App() {
         <Route path='admin' element={<AdminDashboard />} />
         <Route path='admin/create-category' element={<CreateCategory />} />
         <Route path='admin/create-product' element={<CreateProduct />} />
+        <Route path='admin/product/:slug' element={<UpdateProduct/>} />
+        <Route path='admin/Products' element={<Products />} />
         <Route path='admin/users' element={<Users />} />  
       </Route>
       <Route exact path = '/about' element={<About />}/>

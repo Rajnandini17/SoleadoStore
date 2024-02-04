@@ -65,12 +65,12 @@ const CreateProduct = () => {
       productData.append("category", category);
       productData.append("shipping", shipping);
 
-      const {data} = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/create-product`, config, productData);
-      if(data?.success) {
+      const product = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/create-product`,productData, config);
+      if(product.data.success) {
         toast.success('Product created Successfully');
         navigate('/dashboard/admin/products');
       } else {
-        toast.error(data?.message);
+        toast.error(product.data.message);
       }
 
     } catch (error) {
