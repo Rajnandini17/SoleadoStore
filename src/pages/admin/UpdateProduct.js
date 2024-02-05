@@ -9,7 +9,6 @@ const {Option} = Select;
 
 const UpdateProduct = () => {
   const navigate = useNavigate();
-//   const params = useParams();
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -17,9 +16,10 @@ const UpdateProduct = () => {
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
-  const [photo, setPhoto] = useState('');
+  const [photo, setPhoto] = useState("");
   const { slug } = useParams();
-  console.log('Current Slug:', slug);
+  const [id, setId] = useState("");
+//   console.log('Current Slug:', slug);
 
   //get single product
   const getSingleProduct = async () => {
@@ -28,14 +28,15 @@ const UpdateProduct = () => {
         console.log('API Response:', data);
     
 
-        if(data && data.products) {
-            const productData = data.products;
+    if(data && data.products) {
+        const productData = data.products;
+        setId(productData.id);
       setName(productData.name);
       setDescription(productData.description);
       setPrice(productData.price);
       setQuantity(productData.quantity);
       setShipping(productData.shipping);
-      setCategory(productData.categoryId);
+      setCategory(productData.category_id);
     } else {
       console.log('Product not found in API response');
       console.log('API Response:', data);
@@ -78,8 +79,8 @@ const UpdateProduct = () => {
     getAllCategory();
   }, []);
 
-  //create product function
-  const handleCreate = async (event) => {
+  //update product function
+  const handleUpdate = async (event) => {
     event.preventDefault();
     try {
       const auth = JSON.parse(localStorage.getItem('auth'));
@@ -95,13 +96,13 @@ const UpdateProduct = () => {
       productData.append("description", description);
       productData.append("price", price);
       productData.append("quantity", quantity);
-      productData.append("photo", photo);
+      photo && productData.append("photo", photo);
       productData.append("category", category);
       productData.append("shipping", shipping);
 
-      const product = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/create-product`,productData, config);
+      const product = await axios.put(`${process.env.REACT_APP_API}/api/v1/product/update-product/${id}`,productData, config);
       if(product.data.success) {
-        toast.success('Product created Successfully');
+        toast.success('Product updated Successfully');
         navigate('/dashboard/admin/products');
       } else {
         toast.error(product.data.message);
@@ -110,6 +111,33 @@ const UpdateProduct = () => {
     } catch (error) {
       console.log(error);
       toast.error('Something went wrong');
+    }
+  };
+
+  //handle delete product
+  const handleDelete = async () => {
+    try {
+        let answer = window.prompt('Do you really want to delete this item?');
+        if(!answer) return;
+
+        const auth = JSON.parse(localStorage.getItem('auth'));
+      const config = {
+        headers: {
+          Authorization: `Bearer ${auth.token}`, 
+        },
+      };
+       const {data} = await axios.delete(`${process.env.REACT_APP_API}/api/v1/product/delete-product/${id}`, config);
+       if(data?.success) {
+        toast.success('Product deleted successfully');
+        navigate('/dashboard/admin/products'); 
+       } else {
+        toast.error('Product not found!');
+       }
+    //    toast.success('Product deleted successfully');
+    //    navigate('/dashboard/admin/products'); 
+    } catch (error) {
+        console.log(error);
+        toast.error('Something went wrong');
     }
   };
 
@@ -124,7 +152,9 @@ const UpdateProduct = () => {
         <div className='m-1 w-75'>
           <Select bordered={false} placeholder="Select a category"
           size='large' showSearch className='form-select mb-3'
-          onChange={(value) => {setCategory(value)}}>
+          onChange={(value) => {setCategory(value);}}
+        value={category}
+          >
           {categories?.map(c => (
             <Option key = {c.id} value = {c.id}>{c.name}</Option>
           ))}
@@ -133,13 +163,26 @@ const UpdateProduct = () => {
           <div className='mb-3'>
             <label className='btn btn-outline-secondary'>
             {photo ? photo.name : "Upload Photo"} 
-              <input type='file' name='photo' accept='image/*' onChange={(event) => setPhoto(event.target.files[0])} hidden/>
+              <input 
+              type='file' 
+              name='photo' 
+              accept='image/*' 
+              onChange={(event) => setPhoto(event.target.files[0])} 
+              hidden
+              />
             </label>
           </div>
           <div className='mb-3'>
-            {photo && (
+            {photo ? (
               <div className='text-center'>
                 <img src={URL.createObjectURL(photo)} alt='product' height={'200px'}
+                className='img img-responsive'/>
+              </div>
+            ) : (
+                <div className='text-center'>
+                <img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${id}`}
+                alt='product' 
+                height={'200px'}
                 className='img img-responsive'/>
               </div>
             )}
@@ -190,14 +233,20 @@ const UpdateProduct = () => {
             className='form-select mb-3' 
             onChange={(value) => {setShipping(value);
             }}
+            value={shipping ? "Yes" : "No"}
             >
               <Option value='0'>No</Option>
               <Option value='1'>Yes</Option>
             </Select> 
           </div>
           <div className='mb-3'>
-            <button className='btn btn-primary' onClick={handleCreate}>
+            <button className='btn btn-primary' onClick={handleUpdate}>
               UPDATE PRODUCT
+            </button>
+          </div>
+          <div className='mb-3'>
+            <button className='btn btn-danger' onClick={handleDelete}>
+              DELETE PRODUCT
             </button>
           </div>
 
