@@ -41,6 +41,7 @@ const AdminMenu = () => {
             <span className='sideNav-item'>Products</span>
             </Link>
         </li>
+        
     </ul>
    </div> 
 
