@@ -4,10 +4,13 @@ import  '../../styles/Header.css';
 import { useAuth } from '../../context/auth';
 import { toast } from 'react-toastify';
 import SearchInput from './SearchInput';
+import useCategory from '../../hooks/useCategory';
 
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  const categories = useCategory();
+
   const handleLogout = () => {
     setAuth( prevAuth => ({
       ...prevAuth,
@@ -70,7 +73,34 @@ const Header = () => {
   {/* <Link className="nav-link" to="/" onClick={handleLogout}>Logout</Link> */}
     </>
   )}
-  <Link className="nav-link" to="/category">Category</Link>
+
+  
+  <Link className="nav-link-dropdown">
+  <Link
+    className="nav-link dropdown-toggle"  
+    to={'/categories'}          
+    data-bs-toggle="dropdown"
+    >
+    Category
+  </Link>
+
+ <ul className="dropdown-menu">
+ <li>
+  <Link className='dropdown-item' to ={'/categories'}>
+    All categories
+  </Link>
+ </li>
+ {categories?.map((c) => (
+  <li>
+    <Link className='dropdown-item' to ={`/category/${c.slug}`}>
+      {c.name}
+    </Link>
+  </li>
+ ))}
+ </ul>
+  </Link>
+
+
   <Link className="nav-link" to="/">Home</Link>
   {/* <Link className="nav-link" to="*"> PageNotFound</Link> */}
 </nav>
