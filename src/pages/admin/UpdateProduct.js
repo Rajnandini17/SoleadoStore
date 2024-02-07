@@ -126,7 +126,7 @@ const UpdateProduct = () => {
           Authorization: `Bearer ${auth.token}`, 
         },
       };
-       const {data} = await axios.delete(`${process.env.REACT_APP_API}/api/v1/product/delete-product/${id}`, config);
+       const {data} = await axios.delete(`${process.env.REACT_APP_API}/api/v1/product/product-delete/${id}`, config);
        if(data?.success) {
         toast.success('Product deleted successfully');
         navigate('/dashboard/admin/products'); 

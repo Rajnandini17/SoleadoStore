@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import  '../../styles/Header.css';
 import { useAuth } from '../../context/auth';
 import { toast } from 'react-toastify';
+import SearchInput from './SearchInput';
 
 
 const Header = () => {
@@ -22,6 +23,12 @@ const Header = () => {
   <div className="navbar-title-h1">
         <h1>IntelliShop</h1>
       </div>
+
+<div className='header-search-bar'>
+<SearchInput/>
+</div>
+      
+
   <Link className="nav-link" to="/cart">Cart</Link>
 
   {!auth.user ? (

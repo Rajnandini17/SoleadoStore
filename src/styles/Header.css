@@ -16,6 +16,11 @@ nav {
     font-weight: 200;
     margin: 15px 10px; /* margin top & bottom = 15, L & R = 10*/
   }
+
+  /* .header-search-bar{
+    margin-left: 40px;
+    margin-top: 40px;
+  } */
   
   .nav-link {
     float: inline-end;
