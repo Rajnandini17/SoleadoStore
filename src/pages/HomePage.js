@@ -4,11 +4,14 @@ import axios from 'axios';
 import {Checkbox, Radio} from 'antd';
 import { Prices } from '../components/Layout/Prices';
 import {useNavigate} from 'react-router-dom';
+import {useCart} from "../context/cart";
+import {toast} from 'react-toastify';
 
 
 const HomePage = () => {
   // const [auth] = useAuth();
   const navigate = useNavigate();
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -210,9 +213,19 @@ useEffect(() => {
                 </button>
 
                 <button 
-                className='btn btn-secondary ms-1'>
+                className='btn btn-secondary ms-1' 
+                onClick={() => {
+                  setCart((prevCart) => {
+                    const newCart =  [...prevCart, { ...p, price: parseFloat(p.price) }];
+                    localStorage.setItem('cart', JSON.stringify(newCart));
+                    return newCart;
+                  });
+                  toast.success('Item added to cart');
+                }}
+              >
                 Add to Cart
-                </button>
+              </button>
+
             </div>
             </div>
             

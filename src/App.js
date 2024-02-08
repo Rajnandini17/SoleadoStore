@@ -31,6 +31,7 @@ import SearchLanding from './pages/SearchLanding';
 import ProductDetails from './pages/ProductDetails';
 import Categories from './pages/Categories';
 import CategoryList from './pages/CategoryList';
+import CartPage from './pages/CartPage';
 
 
 
@@ -46,6 +47,7 @@ function App() {
       <Route exact path = '/' element={<HomePage />}/>
       <Route exact path='/product/:slug' element={<ProductDetails/>} />
       <Route exact path='/categories' element={<Categories />} />
+      <Route exact path='/cart' element={<CartPage/>} />
       <Route exact path='/category/:slug' element={<CategoryList/>} /> 
       <Route exact path='/search' element={<SearchLanding/>}/>
       <Route exact path='/dashboard' element={<PrivateRoute/>}>

@@ -33,6 +33,13 @@ nav {
     text-decoration: none;
     
   }
+
+  .nav-link-cart{
+    padding: 0px;
+    float: inline-end;
+    margin-right: 10px;
+    display: block;
+  }
   
   .nav-link:hover {
     /* background-color: #e6ddd3; */

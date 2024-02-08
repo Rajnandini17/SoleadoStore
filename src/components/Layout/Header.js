@@ -5,10 +5,14 @@ import { useAuth } from '../../context/auth';
 import { toast } from 'react-toastify';
 import SearchInput from './SearchInput';
 import useCategory from '../../hooks/useCategory';
+import { useCart } from '../../context/cart';
+import {Badge} from 'antd';
+import bag_icon from '../../images/bag.png';
 
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  const [cart] = useCart();
   const categories = useCategory();
 
   const handleLogout = () => {
@@ -32,7 +36,12 @@ const Header = () => {
 </div>
       
 
-  <Link className="nav-link" to="/cart">Cart</Link>
+<Link className="nav-link-cart" to="/cart">
+<Badge count={cart?.length} showZero>
+  <img className='img-icon-login' src={bag_icon} alt='' style={{color: 'white'}}/>
+  </Badge>
+  </Link>
+
 
   {!auth.user ? (
     <>
