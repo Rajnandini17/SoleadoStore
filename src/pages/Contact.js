@@ -1,78 +1,97 @@
 import React from 'react';
-import '../styles/ContactPage.css'
+// import '../styles/ContactPage.css'
+import styled from 'styled-components';
 
 
 const Contact = () => {
+
+  const Wrapper = styled.section`
+  padding: 9rem 0 5rem 0;
+  text-align: center;
+
+  .container{
+    margin-top: 6rem;
+
+    .contact-form{
+      max-width: 50rem;
+      margin: auto;
+
+      .contact-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        input[type="submit"] {
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+              background-color: ${({ theme }) => theme.colors.white};
+              border: 1px solid ${({ theme }) => theme.colors.btn};
+              color: ${({ theme }) => theme.colors.btn};
+              transform: scale(0.9);
+            }
+        }
+      }
+    }
+  }
+  `;
+
   return (
 
-    <>
-       
-    <div class="contact-container">
-      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h2 class="display-4 fw-normal" style={{fontFamily: 'sans-serif', padding:'10px 10px 5px 10px', fontWeight:'bold'}}>CONTACT US</h2>
-        <p class="fs-5 text-body-secondary" style={{fontFamily: 'sans-serif', fontSize: '14px'}}>Got questions? We are here to help!</p>
-      </div>
-      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-        <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-dark">
-            <div class="card-header py-3" style={{backgroundColor:'#f5ba13'}}>
-              <h4 class="my-0 fw-normal" style={{color: 'white', fontWeight:'bold'}}>EMAIL</h4>
-            </div>
-            <div class="card-body">
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Typical reply time: within a day or two</li>
-                <li>Everyday 6AM to 6PM IST</li>
-                <li>communications@intellishop.com</li>
-                <li className='emoji'>📧</li>
-              </ul>
-      
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-dark">
-            <div class="card-header py-3" style={{backgroundColor:'#f5ba13'}}>
-              <h4 class="my-0 fw-normal" style={{color: 'white', fontWeight:'bold'}}>HELP CENTER</h4>
-            </div>
-            <div class="card-body">
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Typical reply time: within a minute or two</li>
-                <li>Everyday 10AM to 6PM IST</li>
-                <li>+120-5446787879</li>
-                <li>+120-5446800333</li>
-                <li className='emoji'>📞</li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-dark">
-            <div class="card-header py-3" style={{backgroundColor:'#f5ba13'}}>
-              <h4 class="my-0 fw-normal" style={{color: 'white', fontWeight:'bold'}}>ADDRESS</h4>
-            </div>
-            <div class="card-body">
-              
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>A7/34 Bommenahalli, Bidarahalli</li>
-                <li>Bengaluru, Karnataka</li>
-                <li className='emoji'>📍</li>
-              </ul>
-              
-            </div>
-          </div>
+    <Wrapper>
+      <h2 className='common-heading'>Contact Us</h2>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9615251136543!2d77.60771629999999!3d12.974312699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17a7cdc2f63d%3A0xde06f1c3ecfffca!2sChurch%20Street%20Banglore!5e0!3m2!1sen!2sin!4v1708367911540!5m2!1sen!2sin" 
+      title='location'
+      width="100%" 
+      height="450" 
+      style={{ border: 0 }} 
+      allowFullScreen="" 
+      loading="lazy" 
+      referrerPolicy="no-referrer-when-downgrade">
+      </iframe>
+
+
+      <div className="container">
+        <div className="contact-form">
+          <form action='' method='POST' className='contact-inputs'>
+            <input 
+            type='text' 
+            placeholder='username' 
+            name='username'
+            required
+            autoComplete='off'
+            value=""
+            />
+            <input
+            type='email'
+            placeholder='Email'
+            name='Email'
+            autoComplete='off'
+            required
+            value=""
+            />
+            <textarea 
+              name='Message'
+              placeholder='Enter your message'
+              cols='30'
+              rows='10'
+              required
+              autoComplete='off'
+            />
+            <input 
+              type='submit'
+              value='submit'
+            />
+          </form>
         </div>
       </div>
-    </div>
-  
-    </>
 
+    </Wrapper>    
 
-
-
-
-
-  )
-}
+  );
+};
 
 export default Contact;

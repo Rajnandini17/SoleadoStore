@@ -3,7 +3,7 @@
 
 nav {
     background-color: #f5ba13;
-    overflow: auto; /*not hiding content, can also be set to hidden */
+    overflow: auto; /* not hiding content, can also be set to hidden */
     padding: 5px; 
     margin: auto;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -31,7 +31,7 @@ nav {
     font-weight: 600;
     padding: 20px 18px;
     text-decoration: none;
-    
+
   }
 
   .nav-link-cart{

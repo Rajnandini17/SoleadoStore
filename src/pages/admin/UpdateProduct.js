@@ -1,10 +1,76 @@
 import React, {useState, useEffect} from 'react';
-import AdminMenu from '../../components/Layout/AdminMenu';
 import {toast} from 'react-toastify';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
-import {Select} from 'antd';
-const {Option} = Select;
+import styled from 'styled-components';
+
+
+const Wrapper = styled.div`
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-container {
+    margin: 10px auto;
+    max-width: 400px;
+  }
+
+  .mb-3 {
+    margin-bottom: 15px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .btn-primary {
+    background-color: #0a1435;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .btn-danger {
+    background-color: red;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .img-responsive {
+    width: 100%;
+    height: auto;
+  }
+`;
 
 
 const UpdateProduct = () => {
@@ -19,7 +85,7 @@ const UpdateProduct = () => {
   const [photo, setPhoto] = useState("");
   const { slug } = useParams();
   const [id, setId] = useState("");
-//   console.log('Current Slug:', slug);
+
 
   //get single product
   const getSingleProduct = async () => {
@@ -144,116 +210,101 @@ const UpdateProduct = () => {
 
 
   return (
+    <Wrapper>
     <div>
-    <AdminMenu />
-    <div className='main-content'>
-    <div className='container'>
         <h1>Update Product</h1>
-        <div className='m-1 w-75'>
-          <Select bordered={false} placeholder="Select a category"
-          size='large' showSearch className='form-select mb-3'
-          onChange={(value) => {setCategory(value);}}
-        value={category}
-          >
-          {categories?.map(c => (
-            <Option key = {c.id} value = {c.id}>{c.name}</Option>
+        <div className='form-container'>
+        <select
+          className='form-select mb-3'
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value=''>Select a category</option>
+          {categories?.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
+            </option>
           ))}
+        </select>
 
-          </Select>
           <div className='mb-3'>
-            <label className='btn btn-outline-secondary'>
-            {photo ? photo.name : "Upload Photo"} 
-              <input 
-              type='file' 
-              name='photo' 
-              accept='image/*' 
-              onChange={(event) => setPhoto(event.target.files[0])} 
-              hidden
-              />
-            </label>
+          <label htmlFor='photo' className='btn-primary'>
+            {photo ? photo.name : 'Upload Photo'}
+          </label>
+          <input
+            type='file'
+            id='photo'
+            name='photo'
+            accept='image/*'
+            style={{ display: 'none' }}
+            onChange={(e) => setPhoto(e.target.files[0])}
+          />
           </div>
+
+          {photo && (
           <div className='mb-3'>
-            {photo ? (
-              <div className='text-center'>
-                <img src={URL.createObjectURL(photo)} alt='product' height={'200px'}
-                className='img img-responsive'/>
-              </div>
-            ) : (
-                <div className='text-center'>
-                <img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${id}`}
-                alt='product' 
-                height={'200px'}
-                className='img img-responsive'/>
-              </div>
-            )}
-          </div>
-
-          <div className="mb-3">
-            <input type='text' 
-            value={name} 
-            placeholder='write a name'
-            className='form-control' 
-            onChange={(event) => setName(event.target.value)} 
+            <img
+              src={URL.createObjectURL(photo)}
+              alt='product'
+              className='img-responsive'
             />
           </div>
+        )}
 
-          <div className="mb-3">
-            <textarea type='text' 
-            value={description} 
-            placeholder='give description'
-            className='form-control' 
-            onChange={(event) => setDescription(event.target.value)}              
-            />
-          </div>
+        <input
+          type='text'
+          value={name}
+          placeholder='Product Name'
+          className='form-control mb-3'
+          onChange={(e) => setName(e.target.value)}
+        />
 
-          <div className="mb-3">
-            <input type='number' 
-            value={price} 
-            placeholder='write a price'
-            className='form-control' 
-            onChange={(event) => setPrice(event.target.value)}  
-            />
-          </div>
+        <textarea  
+          value={description}
+          placeholder='Product Description'
+          className='form-control mb-3'
+          onChange={(e) => setDescription(e.target.value)}
+        />
 
-          <div className="mb-3">
-            <input type='number' 
-            value={quantity} 
-            placeholder='write a quantity'
-            className='form-control' 
-            onChange={(event) => setQuantity(event.target.value)} 
-            />
-          </div>
+        <input
+          type='number'
+          value={price}
+          placeholder='Price'
+          className='form-control mb-3'
+          onChange={(e) => setPrice(e.target.value)}
+        />
 
-          <div className="mb-3">
-            <Select
-            bordered={false} 
-            placeholder='Select Shipping'
-            size='large'
-            showSearch
-            className='form-select mb-3' 
-            onChange={(value) => {setShipping(value);
-            }}
-            value={shipping ? "Yes" : "No"}
-            >
-              <Option value='0'>No</Option>
-              <Option value='1'>Yes</Option>
-            </Select> 
-          </div>
-          <div className='mb-3'>
-            <button className='btn btn-primary' onClick={handleUpdate}>
+        <input
+          type='number'
+          value={quantity}
+          placeholder='Quantity'
+          className='form-control mb-3'
+          onChange={(e) => setQuantity(e.target.value)}
+        />
+
+         <select
+          className='form-select mb-3'
+          onChange={(e) => setShipping(e.target.value)}
+        >
+          <option value=''>Select Shipping</option>
+          <option value='0'>No</option>
+          <option value='1'>Yes</option>
+        </select>
+
+      
+            <button className='btn-primary' onClick={handleUpdate}>
               UPDATE PRODUCT
             </button>
-          </div>
-          <div className='mb-3'>
-            <button className='btn btn-danger' onClick={handleDelete}>
+          
+        
+            <button className='btn-danger' onClick={handleDelete}>
               DELETE PRODUCT
             </button>
-          </div>
+          
 
         </div>
-    </div>
+    
    </div>
-    </div>
+    </Wrapper>
   )
         };
 

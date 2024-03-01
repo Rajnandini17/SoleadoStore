@@ -1,9 +1,54 @@
 import React, {useState, useEffect} from 'react';
-import AdminMenu from '../../components/Layout/AdminMenu';
 import {toast} from 'react-toastify';
 import axios from 'axios';
 import CategoryForm from '../../components/Layout/CategoryForm';
 import {Modal} from 'antd';
+import styled from 'styled-components';
+import { LiaEdit } from "react-icons/lia";
+import { MdDeleteOutline } from "react-icons/md";
+
+
+const Wrapper = styled.div`
+  padding: 20px;
+`;
+
+const Container = styled.div`
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+const Heading = styled.h3`
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+`;
+
+const Th = styled.th`
+  background-color: #ccc;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+`;
+
+const Td = styled.td`
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+`;
+
+// const Button = styled.button`
+//   margin-right: 8px;
+//   font-size: 14px;
+// `;
 
 
 const CreateCategory = () => {
@@ -129,11 +174,9 @@ const handleDelete = async(id) => {
 
 
   return (
-    <div>
-    <AdminMenu />
-    <div className='main-content'>
-    <div className='container'>
-        <h1>Manage category</h1>
+    <Wrapper>
+    <Container>
+        <Heading>Manage category</Heading>
 
         <div >
           <CategoryForm 
@@ -143,44 +186,44 @@ const handleDelete = async(id) => {
           />
         </div>
         
-        <div className='w-75'>
-        <table className="table">
-  <thead className="thead-dark">
+        <Table>
+  <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Actions</th>
+      <Th scope="col">Category Name</Th>
+      <Th scope="col">Actions</Th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    
       {categories.map(category => (
-        <>
-        <td key={category.id}>{category.name}</td>
-        <td>
-        <button 
-        className = 'btn btn-primary ms-2' 
+        <tr key={category.id}>
+        <Td>{category.name}</Td>
+        <Td>
+        
+        <LiaEdit
+       style={{fontSize: '20px', color: '#0a1435'}}
         onClick={() => {
           setVisible(true); 
           setUpdatedName(category.name);
           setSelected(category)
           }}
-        >
-        Edit
-        </button></td>
-        <td>
-        <button 
-        className = 'btn btn-danger ms-2' 
+        />
+        
+        
+        
+        <MdDeleteOutline 
+        style= {{fontSize: '20px', color: 'red'}}
         onClick={() => {handleDelete(category.id)
         }}
-        >
-        Delete
-        </button></td>
-        </>
+        />
+        
+        
+        </Td>
+        </tr>
       ))}
-    </tr>
   </tbody>
-</table>
-        </div>
+</Table>
+        
 
         <Modal onCancel={() => setVisible(false)} 
         footer={null} 
@@ -190,10 +233,9 @@ const handleDelete = async(id) => {
           setValue={setUpdatedName} handleSubmit={handleUpdate}/>
         </Modal>
 
-    </div>
-   </div>
-    </div>
-  )
-}
+   </Container>
+    </Wrapper>
+  );
+};
 
-export default CreateCategory
+export default CreateCategory;

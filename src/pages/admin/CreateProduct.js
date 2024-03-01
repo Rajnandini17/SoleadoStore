@@ -1,10 +1,67 @@
 import React, {useState, useEffect} from 'react';
-import AdminMenu from '../../components/Layout/AdminMenu';
 import {toast} from 'react-toastify';
 import {useNavigate} from 'react-router-dom';
+import styled from 'styled-components';
 import axios from 'axios';
 import {Select} from 'antd';
 const {Option} = Select;
+
+
+
+const Wrapper = styled.div`
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    margin: 10px auto;
+    max-width: 400px;
+  }
+
+  .mb-3 {
+    margin-bottom: 15px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .btn-primary {
+    background-color: #0a1435;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .img-responsive {
+    width: 100%;
+    height: auto;
+  }
+`;
 
 
 const CreateProduct = () => {
@@ -66,6 +123,7 @@ const CreateProduct = () => {
       productData.append("shipping", shipping);
 
       const product = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/create-product`,productData, config);
+      console.log('Received data');
       if(product.data.success) {
         toast.success('Product created Successfully');
         navigate('/dashboard/admin/products');
@@ -82,96 +140,97 @@ const CreateProduct = () => {
 
 
   return (
+    <Wrapper>
     <div>
-    <AdminMenu />
-    <div className='main-content'>
-    <div className='container'>
-        <h1>Create Product</h1>
-        <div className='m-1 w-75'>
-          <Select bordered={false} placeholder="Select a category"
-          size='large' showSearch className='form-select mb-3'
-          onChange={(value) => {setCategory(value)}}>
-          {categories?.map(c => (
-            <Option key = {c.id} value = {c.id}>{c.name}</Option>
+      <h1>Create Product</h1>
+      <div className='form-container'>
+        <select
+          className='form-select mb-3'
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value=''>Select a category</option>
+          {categories?.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
+            </option>
           ))}
+        </select>
 
-          </Select>
-          <div className='mb-3'>
-            <label className='btn btn-outline-secondary'>
-            {photo ? photo.name : "Upload Photo"} 
-              <input type='file' name='photo' accept='image/*' onChange={(event) => setPhoto(event.target.files[0])} hidden/>
-            </label>
-          </div>
-          <div className='mb-3'>
-            {photo && (
-              <div className='text-center'>
-                <img src={URL.createObjectURL(photo)} alt='product' height={'200px'}
-                className='img img-responsive'/>
-              </div>
-            )}
-          </div>
-
-          <div className="mb-3">
-            <input type='text' 
-            value={name} 
-            placeholder='write a name'
-            className='form-control' 
-            onChange={(event) => setName(event.target.value)} 
-            />
-          </div>
-
-          <div className="mb-3">
-            <textarea type='text' 
-            value={description} 
-            placeholder='give description'
-            className='form-control' 
-            onChange={(event) => setDescription(event.target.value)}              
-            />
-          </div>
-
-          <div className="mb-3">
-            <input type='number' 
-            value={price} 
-            placeholder='write a price'
-            className='form-control' 
-            onChange={(event) => setPrice(event.target.value)}  
-            />
-          </div>
-
-          <div className="mb-3">
-            <input type='number' 
-            value={quantity} 
-            placeholder='write a quantity'
-            className='form-control' 
-            onChange={(event) => setQuantity(event.target.value)} 
-            />
-          </div>
-
-          <div className="mb-3">
-            <Select
-            bordered={false} 
-            placeholder='Select Shipping'
-            size='large'
-            showSearch
-            className='form-select mb-3' 
-            onChange={(value) => {setShipping(value);
-            }}
-            >
-              <Option value='0'>No</Option>
-              <Option value='1'>Yes</Option>
-            </Select> 
-          </div>
-          <div className='mb-3'>
-            <button className='btn btn-primary' onClick={handleCreate}>
-              CREATE PRODUCT
-            </button>
-          </div>
-
+        <div className='mb-3'>
+          <label htmlFor='photo' className='btn-primary'>
+            {photo ? photo.name : 'Upload Photo'}
+          </label>
+          <input
+            type='file'
+            id='photo'
+            name='photo'
+            accept='image/*'
+            style={{ display: 'none' }}
+            onChange={(e) => setPhoto(e.target.files[0])}
+          />
         </div>
-    </div>
-   </div>
-    </div>
-  )
-}
 
-export default CreateProduct
+        {photo && (
+          <div className='mb-3'>
+            <img
+              src={URL.createObjectURL(photo)}
+              alt='product'
+              className='img-responsive'
+            />
+          </div>
+        )}
+
+        <input
+          type='text'
+          value={name}
+          placeholder='Product Name'
+          className='form-control mb-3'
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <textarea
+          value={description}
+          placeholder='Product Description'
+          className='form-control mb-3'
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
+        <input
+          type='number'
+          value={price}
+          placeholder='Price'
+          className='form-control mb-3'
+          onChange={(e) => setPrice(e.target.value)}
+        />
+
+        <input
+          type='number'
+          value={quantity}
+          placeholder='Quantity'
+          className='form-control mb-3'
+          onChange={(e) => setQuantity(e.target.value)}
+        />
+
+        <select
+          className='form-select mb-3'
+          onChange={(e) => setShipping(e.target.value)}
+        >
+          <option value=''>Select Shipping</option>
+          <option value='0'>No</option>
+          <option value='1'>Yes</option>
+        </select>
+
+        <button className='btn-primary' onClick={handleCreate}>
+          CREATE PRODUCT
+        </button>
+      </div>
+    </div>
+  </Wrapper>
+
+
+
+
+  );
+};
+
+export default CreateProduct;
