@@ -22,32 +22,41 @@
   
   .img-icon-login{
     margin: 0px 10px;
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
   }
   
   .inputs-login{
     display: flex;
     flex-direction: column;
-    
   }
+
   
   .input-login{
     display: flex;
     align-items: center;
-    margin: 15px;
+    margin: 20px;
     border: 1px solid;
     border-bottom: 1px solid #000; 
-    border-radius: 12px;
-    width: 350px;
+    border-radius: 15px;
+    width: 360px;
+    height: 36px;
+  }
+
+  .input-login input{
+    font-size: 14px;
   }
   
   .form-container-login form h1{
+    font-size: 36px;
     text-align: center;
+    color: #0a1435;
   }
   
   .form-container-login form h4{
     text-align: center;
+    font-size: 20px;
+    font-weight: bold;
   }
   
   .form-container-login form {
@@ -66,10 +75,11 @@
     .form-container-login form button {
       border: 1px solid black;
       border-radius: 12px;
-      background-color: #000;
+      background-color: #0a1435;
       color: white;
       width: 350px;
       margin: 12px;
+      font-size: 16px;
     }
     
     .form-container-login form button:hover {
@@ -91,6 +101,7 @@
      .form-container-login form h6{
       text-align: left;
       padding: 12px;
+      font-size: 12px;
     }
   
    

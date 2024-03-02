@@ -18,6 +18,7 @@
 .form-control{
   width: 300px;
   border: none;
+  font-size: 14px;
 }
 
 .img-icon{
@@ -40,14 +41,19 @@
   border-bottom: 1px solid #000; 
   border-radius: 12px;
   width: 350px;
+  height: 36px;
 }
 
 .form-container form h1{
   text-align: center;
+  font-size: 38px;
+  color: #0a1435;
 }
 
 .form-container form h4{
   text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .form-container form {
@@ -60,10 +66,11 @@
   .form-container form button {
     border: 1px solid black;
     border-radius: 12px;
-    background-color: #000;
+    background-color: #0a1435;
     color: white;
     width: 350px;
     margin: 12px;
+    font-size: 16px;
   }
 
   /* .button-class{
@@ -88,6 +95,7 @@
  
    .form-container form h6{
     text-align: center;
+    font-size: 12px;
   }
   
 

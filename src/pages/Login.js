@@ -65,7 +65,7 @@ const Login = () => {
 
 <div className='input-fields-login'>
 
-<div class="input-login">
+<div className="input-login">
     <img className='img-icon-login' src={email_icon} alt='' />
     {/* <label for="inputEmail">Email</label> */}
     <input 
