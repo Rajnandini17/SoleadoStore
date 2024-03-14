@@ -11,6 +11,8 @@ this website has the following features:
 
 New users are required to provide their information and sign up to proceed to checkout. On the other hand, existing users can simply log in with their credentials to continue shopping. In case an existing user forgets their password or is unable to log in with their login information, they can reset their password by providing the nickname they used when they signed up. 
 
+![sign up page](displayImages/SignUpPage.png)
+
 ### `All products page with filters`
 
 This page displays products from all available categories. The users have an option to filter products based on category or price. 
