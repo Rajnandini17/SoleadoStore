@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# SoleadoStore
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The e-commerce website SoleadoStore is developed using Express, Node.js, Postgresql, and ReactJS. At SoleadoStore, you can shop in seven different categories, including books, electronics, watches, handbags, toys, household products, and shoes.
+The website has a navbar, a main section with a shop now button that navigates the user to the products page, a bestsellers section, a features section, and a footer.
 
-## Available Scripts
+## Website features
 
-In the project directory, you can run:
+this website has the following features: 
 
-### `npm start`
+### `login, signup, and, reset password page`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+New users are required to provide their information and sign up to proceed to checkout. On the other hand, existing users can simply log in with their credentials to continue shopping. In case an existing user forgets their password or is unable to log in with their login information, they can reset their password by providing the nickname they used when they signed up. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `All products page with filters`
 
-### `npm test`
+This page displays products from all available categories. The users have an option to filter products based on category or price. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ` single category page`
 
-### `npm run build`
+This page displays products from any chosen category along with the number of products found.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `single product page`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This page displays information of a single product. There's also an add to cart button enabling user to add the product to cart.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `similar products section`
 
-### `npm run eject`
+This section is just below the single product information. Products similar to the chosen product are displayed in this section. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `Cart page`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This page displays all products added to cart by the user and the total amount to be paid. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `User dashboard`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This section provides two options to the user. The user can either logout or edit their personal information.  
 
-## Learn More
+### `Admin dashboard`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This section is only for the admin. 
+It enables the admin to create or update a category, create products, Update product information and view all products. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `Search results page`
 
-### Code Splitting
+This page displays all products related to your search.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `contact us page`
 
-### Analyzing the Bundle Size
+This page consists of a google map displaying our location and also a form wherein the user can type in their message for us.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### `Not found page`
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This page displays error 404 and navigates the user to the home page.
